@@ -1,24 +1,7 @@
 
 Step 0 : Backedn & Frontedn & DB is working Locally - DONE 
 
-Phase 1 — Git Strategy First - 
-=====
-what if we Create 
-
-Branches Like 
-
-Dev Branch - 
-STQA Branch - 
-Prod Branch - 
-main Branch -  
-
-so developer like Frontend & Backend Developer will work on Dev branch 
-
-once dev branch or developer pushes code to github it will then run the webhook and after approval in jenkins the code will be move to stqa branch and after stqa manual verifies nad after their testing it gets deployed to prod branch 
- 
- but this is my undesrtanding how in real world , real mnc company the this flow is work? ideal flow ? recommend Flow? why ? jhow will work?
- 
-=====
+Phase 1 — Git Strategy First - DONE 
 
 Phase 2 — Webhook Before Jenkins Pipeline
 
