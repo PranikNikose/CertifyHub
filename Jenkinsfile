@@ -19,6 +19,9 @@ pipeline {
 				bat 'docker ps'
 			}
 		}
+		
+		
+		
 	}
 
 }
