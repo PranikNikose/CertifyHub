@@ -1,0 +1,61 @@
+
+Step 0 : Backedn & Frontedn & DB is working Locally - DONE 
+
+Phase 1 — Git Strategy First - 
+=====
+what if we Create 
+
+Branches Like 
+
+Dev Branch - 
+STQA Branch - 
+Prod Branch - 
+main Branch -  
+
+so developer like Frontend & Backend Developer will work on Dev branch 
+
+once dev branch or developer pushes code to github it will then run the webhook and after approval in jenkins the code will be move to stqa branch and after stqa manual verifies nad after their testing it gets deployed to prod branch 
+ 
+ but this is my undesrtanding how in real world , real mnc company the this flow is work? ideal flow ? recommend Flow? why ? jhow will work?
+ 
+=====
+
+Phase 2 — Webhook Before Jenkins Pipeline
+
+Phase 3 — Dockerize Applications
+	-> reate docker files and run locally 
+	
+Phase 4 — Docker Compose Local
+	-> RAN FNTND,BCKN,NGNIX,PostgreSQL
+	
+Phase 5 — Nginx Reverse Proxy
+
+Phase 6 — Terraform State Infrastructure
+
+Phase 7 — Terraform EC2 + EIP
+
+Phase 8 — Jenkins Build Pipeline
+
+Phase 9 — Deployment Automation
+
+Phase 10 — Domain & HTTPS
+
+Phase 11 — Secrets Management
+
+Phase 12 — Rebuild Recovery Test
+
+*********************
+1. Freeze App
+2. Git Repos
+3. GitHub Webhook
+4. Docker Backend
+5. Docker Frontend
+6. Docker Compose
+7. Nginx
+8. Terraform State Backend
+9. Terraform EC2 + EIP
+10. Jenkins Build Pipeline
+11. DockerHub Push
+12. Automated Deployment
+13. Domain + SSL
+14. Recovery Testing
