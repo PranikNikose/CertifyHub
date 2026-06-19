@@ -3,7 +3,7 @@ Step 0 : Backedn & Frontedn & DB is working Locally - DONE
 
 Phase 1 — Git Strategy First - DONE 
 
-Phase 2 — Webhook Before Jenkins Pipeline
+Phase 2 — Webhook Before Jenkins Pipeline - DONE 
 
 Phase 3 — Dockerize Applications
 	-> reate docker files and run locally 
