@@ -1,0 +1,36 @@
+.exam-container {
+    width: 500px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.exam-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.exam-group {
+    margin-bottom: 20px;
+}
+
+.exam-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.exam-group input,
+.exam-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.exam-btn {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+}
