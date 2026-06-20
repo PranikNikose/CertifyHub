@@ -1,11 +1,3 @@
-# Backend
-roulette-backend/target/
-
-# Frontend
-roulette-frontend/node_modules/
-roulette-frontend/build/
-roulette-frontend/.env
-
 # IDE
 .idea/
 .vscode/

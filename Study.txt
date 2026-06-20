@@ -2,12 +2,9 @@
 Step 0 : Backedn & Frontedn & DB is working Locally - DONE 
 Phase 1 — Git Strategy First - DONE 
 Phase 2 — Webhook Before Jenkins Pipeline - DONE 
-
-Phase 3 — Dockerize Applications
-	-> create docker files and run locally. 
+Phase 3 — Dockerize Applications -> create docker files and run locally. - DONE 
 	
-Phase 4 — Docker Compose Local
-	-> RAN FNTND,BCKN,NGNIX,PostgreSQL
+Phase 4 — Docker Compose Local -> ran frontend,backend,nginx,PostgreSQL
 	
 Phase 5 — Nginx Reverse Proxy
 
