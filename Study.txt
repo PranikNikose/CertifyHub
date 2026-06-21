@@ -1,29 +1,27 @@
 
-Step 0 : Backedn & Frontedn & DB is working Locally - DONE 
+Phase 0 — Backend & Frotend & Database is working locally - DONE 
 Phase 1 — Git Strategy First - DONE 
 Phase 2 — Webhook Before Jenkins Pipeline - DONE 
-Phase 3 — Dockerize Applications -> create docker files and run locally. - DONE 
-	
-Phase 4 — Docker Compose Local -> ran frontend,backend,nginx,PostgreSQL
-	
-Phase 5 — Nginx Reverse Proxy
+Phase 3 — Dockerize Applications -> create docker files (Frotend,Backend,Ngnix) and run locally - DONE 
+Phase 4 — Docker Compose Local -> Create Docker Compose file for (Frotend,Backend,Ngnix)) & DB is on laptop - DONE
+Phase 5 — Nginx Reverse Proxy -> Created in Docker Compose itself - DONE
+
+Note: before pushing Images to Docker hub please make sure that you have created the repositories in docker hub also create PAT on Dockerhub and add it in jenkins creds
+Phase 6 — Jenkins Build Pipeline (Code to Image Push)
+
+
+
 
 Phase 6 — Terraform State Infrastructure
-
 Phase 7 — Terraform EC2 + EIP
-
 Phase 8 — Jenkins Build Pipeline
-
 Phase 9 — Deployment Automation
-
 Phase 10 — Domain & HTTPS
-
 Phase 11 — Secrets Management
-
 Phase 12 — Rebuild Recovery Test
 
 *********************
-1. Freeze App
+1. Freeze App 
 2. Git Repos
 3. GitHub Webhook
 4. Docker Backend

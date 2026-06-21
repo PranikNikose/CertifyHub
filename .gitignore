@@ -5,3 +5,8 @@
 # OS
 .DS_Store
 Thumbs.db
+
+certifyhub-backend/target/
+certifyhub-frontend/node_modules/
+.terraform/
+*.tfstate

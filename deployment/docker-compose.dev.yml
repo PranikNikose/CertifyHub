@@ -1,40 +1,27 @@
 services:
-
+  
   nginx:
     build:
-      context: ../nginx
+      context: ../certifyhub-nginx
     container_name: certifyhub-nginx
     depends_on:
       - frontend
       - backend
     ports:
       - "80:80"
-
-  postgres:
-    image: postgres:15
-    container_name: certifyhub-postgres
-    environment:
-      POSTGRES_DB: certifyhub
-      POSTGRES_USER: certifyhub
-      POSTGRES_PASSWORD: certifyhub
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-      - ../database/init_v1_0_0.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
 
   backend:
     build:
       context: ../certifyhub-backend
     container_name: certifyhub-backend
-    depends_on:
-      - postgres
     environment:
-      DB_URL: jdbc:postgresql://postgres:5432/certifyhub
+      DB_URL: jdbc:postgresql://host.docker.internal:5432/certifyhub
       DB_USERNAME: certifyhub
       DB_PASSWORD: certifyhub
     ports:
       - "8082:8082"
+    restart: unless-stopped
 
   frontend:
     build:
@@ -44,6 +31,4 @@ services:
       - backend
     ports:
       - "3000:80"
-
-volumes:
-  postgres-data:
+    restart: unless-stopped
