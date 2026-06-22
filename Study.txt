@@ -8,13 +8,12 @@ Phase 5 — Nginx Reverse Proxy -> Created in Docker Compose itself - DONE
 
 Note: before pushing Images to Docker hub please make sure that you have created the repositories in docker hub also create PAT on Dockerhub and add it in jenkins creds
 Phase 6 — Jenkins Build Pipeline (Code to Image Push)
+Phase 7 — Terraform State Infrastructure (s3 + dynamoDB) + 
 
 
 
+Phase 8 — Terraform EC2 + EIP
 
-Phase 6 — Terraform State Infrastructure
-Phase 7 — Terraform EC2 + EIP
-Phase 8 — Jenkins Build Pipeline
 Phase 9 — Deployment Automation
 Phase 10 — Domain & HTTPS
 Phase 11 — Secrets Management
@@ -35,3 +34,14 @@ Phase 12 — Rebuild Recovery Test
 12. Automated Deployment
 13. Domain + SSL
 14. Recovery Testing
+
+
+terraform/
+├── backend.tf
+├── provider.tf
+├── vpc.tf
+├── security-group.tf
+├── ec2.tf
+├── rds.tf
+├── outputs.tf
+└── variables.tf
