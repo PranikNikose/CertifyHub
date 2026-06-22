@@ -9,7 +9,6 @@ function Dashboard() {
 
     const navigate = useNavigate();
 
-    const username = localStorage.getItem("username");
 
     const fullName = localStorage.getItem("fullName");
 
