@@ -75,7 +75,7 @@ pipeline {
 				stage('Build Frontend App') {
 					steps {
 						dir("${FRONTEND_DIR}") {
-							bat 'npm ci'
+							bat 'npm install'
 							bat 'npm run build'
 						}
 					}
