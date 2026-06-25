@@ -16,3 +16,11 @@ db_username          = "certifyhub"
 db_password          = "certifyhub123"
 db_instance_class    = "db.t3.micro"
 db_allocated_storage = 20
+
+
+ssh_port      = 22
+http_port     = 80
+https_port    = 443
+postgres_port = 5432
+
+allowed_ssh_cidr = "0.0.0.0/0" #YOUR_PUBLIC_IP/32

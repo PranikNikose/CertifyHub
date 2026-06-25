@@ -10,3 +10,8 @@ certifyhub-backend/target/
 certifyhub-frontend/node_modules/
 .terraform/
 *.tfstate
+
+
+# Terraform plan files
+*.tfplan
+tfplan

@@ -68,3 +68,28 @@ variable "db_allocated_storage" {
   description = "RDS Storage"
   type        = number
 }
+
+variable "ssh_port" {
+  description = "SSH Port"
+  type        = number
+}
+
+variable "http_port" {
+  description = "HTTP Port"
+  type        = number
+}
+
+variable "https_port" {
+  description = "HTTPS Port"
+  type        = number
+}
+
+variable "postgres_port" {
+  description = "PostgreSQL Port"
+  type        = number
+}
+
+variable "allowed_ssh_cidr" {
+  description = "CIDR block allowed to SSH into EC2"
+  type        = string
+}
