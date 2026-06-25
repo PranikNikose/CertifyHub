@@ -5,9 +5,9 @@ Phase 2 — Webhook Before Jenkins Pipeline - DONE
 Phase 3 — Dockerize Applications -> create docker files (Frotend,Backend,Ngnix) and run locally - DONE 
 Phase 4 — Docker Compose Local -> Create Docker Compose file for (Frotend,Backend,Ngnix)) & DB is on laptop - DONE
 Phase 5 — Nginx Reverse Proxy -> Created in Docker Compose itself - DONE
-
-Note: before pushing Images to Docker hub please make sure that you have created the repositories in docker hub also create PAT on Dockerhub and add it in jenkins creds
+	Note: before pushing Images to Docker hub please make sure that you have created the repositories in docker hub also create PAT on Dockerhub and add it in jenkins creds
 Phase 6 — Jenkins Build Pipeline (Code to Image Push)
+	nOTE bEFORE S3 & Dynamo we created Bootstrep
 Phase 7 — Terraform State Infrastructure (s3 + dynamoDB) + 
 
 
