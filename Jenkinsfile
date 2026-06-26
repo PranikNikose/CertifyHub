@@ -6,7 +6,7 @@ pipeline {
 
 		buildDiscarder(
 			logRotator(
-				numToKeepStr: '20'
+				numToKeepStr: '10'
 			)
 		)
 	}
@@ -102,7 +102,7 @@ pipeline {
 				stage('Build Frontend App') {
 					steps {
 						dir("${FRONTEND_DIR}") {
-							bat 'npm install'
+							bat 'npm ci'
 							bat 'npm run build'
 						}
 					}
@@ -209,7 +209,7 @@ pipeline {
 
 		stage('Validate Compose File') {
 			steps {
-				bat "docker compose -f ${COMPOSE_FILE_PATH} config"
+				bat "docker-compose -f ${COMPOSE_FILE_PATH} config"
 			}
 		}
 
@@ -264,10 +264,10 @@ pipeline {
 									execCommand: """
 										cd ${REMOTE_DIR}
 
-										docker compose -f ${COMPOSE_FILE} pull
-										docker compose -f ${COMPOSE_FILE} down
-										docker compose -f ${COMPOSE_FILE} up -d
-										docker compose -f ${COMPOSE_FILE} ps
+										docker-compose -f ${COMPOSE_FILE} pull
+										docker-compose -f ${COMPOSE_FILE} down
+										docker-compose -f ${COMPOSE_FILE} up -d
+										docker-compose -f ${COMPOSE_FILE} ps
 									"""
 								)
 							]
