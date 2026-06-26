@@ -17,22 +17,37 @@ pipeline {
 	}
 
 	environment {
+		APP_NAME = 'certifyhub'
+		
 		GIT_REPO_URL = 'https://github.com/PranikNikose/CertifyHub.git'
 		GIT_BRANCH = 'CertifyHub-Pranik'
 		
 		DOCKERHUB_USERNAME = 'praniknikose'
 		DOCKER_CREDENTIAL_ID = 'dockerhub-creds'
 
-		BACKEND_IMAGE  = 'certifyhub-backend'
-		FRONTEND_IMAGE = 'certifyhub-frontend'
-		NGINX_IMAGE    = 'certifyhub-nginx'
+		BACKEND_IMAGE  = "${APP_NAME}-backend"
+		FRONTEND_IMAGE = "${APP_NAME}-frontend"
+		NGINX_IMAGE    = "${APP_NAME}-nginx"
 
-		BACKEND_DIR = 'certifyhub-backend'
-		FRONTEND_DIR = 'certifyhub-frontend'
-		NGINX_DIR = 'certifyhub-nginx'
+		BACKEND_DIR = "${APP_NAME}-backend"
+		FRONTEND_DIR = "${APP_NAME}-frontend"
+		NGINX_DIR = "${APP_NAME}-nginx"
+		
+		
+		REMOTE_DIR = "/home/ec2-user/${APP_NAME}"
+		SSH_CONFIG = 'certifyhub-ec2'
+		COMPOSE_FILE = 'deployment/docker-compose.yml'
 	}
 
 	stages {
+	
+			stage('Build Info') {
+			steps {
+				script {
+					currentBuild.displayName = "#${BUILD_NUMBER}-${APP_NAME}"
+				}
+			}
+		}
 
 		stage('All Environments Check') {
 			steps {
@@ -51,6 +66,14 @@ pipeline {
 		stage('Workspace Cleanup') {
 			steps {
 				cleanWs()
+			}
+		}
+		
+		stage('Cleanup Project Images') {
+			steps {
+				bat """
+					FOR /F "tokens=3" %%i IN ('docker images ^| findstr ${APP_NAME}') DO docker rmi -f %%i
+				"""
 			}
 		}
 
@@ -173,6 +196,84 @@ pipeline {
 			
 		}
 		
+		stage('Verify Compose File') {
+			steps {
+				bat 'dir deployment'
+				bat "type ${COMPOSE_FILE}"
+			}
+		}
+
+		stage('Validate Compose File') {
+			steps {
+				bat "docker compose -f ${COMPOSE_FILE} config"
+			}
+		}
+
+		stage('Prepare EC2') {
+			steps {
+				sshPublisher(
+					publishers: [
+						sshPublisherDesc(
+							configName: SSH_CONFIG,
+							transfers: [
+								sshTransfer(
+									execCommand: """
+										mkdir -p ${REMOTE_DIR}
+										ls -ld ${REMOTE_DIR}
+									"""
+								)
+							]
+						)
+					]
+				)
+			}
+		}
+
+		stage('Upload Compose File') {
+			steps {
+				sshPublisher(
+					publishers: [
+						sshPublisherDesc(
+							configName: SSH_CONFIG,
+							transfers: [
+								sshTransfer(
+									sourceFiles: COMPOSE_FILE,
+									removePrefix: 'deployment',
+									remoteDirectory: APP_NAME
+								)
+							]
+						)
+					]
+				)
+			}
+		}
+
+		
+
+		stage('Deploy Application') {
+			steps {
+				sshPublisher(
+					publishers: [
+						sshPublisherDesc(
+							configName: SSH_CONFIG,
+							transfers: [
+								sshTransfer(
+									execCommand: """
+										cd ${REMOTE_DIR}
+
+										docker compose pull
+										docker compose down
+										docker compose up -d
+
+										docker compose ps
+									"""
+								)
+							]
+						)
+					]
+				)
+			}
+		}
 		
 	}
 	
@@ -180,14 +281,14 @@ pipeline {
 
 	post {
 		success {
-			echo 'Docker Images Successfully Pushed To DockerHub'
+			echo 'Application Successfully Built, Pushed and Deployed'
 		}
 		failure {
 			echo 'Pipeline Failed'
 		}
 		always {
 			bat 'docker images'
-			bat 'docker logout'
+			bat 'docker logout || exit /b 0'
 		}
 	}
 

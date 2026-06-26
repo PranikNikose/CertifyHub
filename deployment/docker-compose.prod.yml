@@ -1,0 +1,34 @@
+services:
+  
+  nginx:
+    build:
+      context: ../certifyhub-nginx
+    container_name: certifyhub-nginx
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ../certifyhub-backend
+    container_name: certifyhub-backend
+    environment:
+      DB_URL=jdbc:postgresql://certifyhub-dev-rds.xxxxxxxxx.ap-south-1.rds.amazonaws.com:5432/certifyhub
+      DB_USERNAME=certifyhub
+      DB_PASSWORD=certifyhub
+    ports:
+      - "8082:8082"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ../certifyhub-frontend
+    container_name: certifyhub-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    restart: unless-stopped

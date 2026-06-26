@@ -23,3 +23,8 @@ tfplan
 # Logs
 *.log
 crash.log
+
+
+# SSH Keys
+*.pem
+*.ppk

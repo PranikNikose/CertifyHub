@@ -1,0 +1,11 @@
+
+Open Powershell and goto this location using 
+
+Cd "C:\BRANCH\CertifyHub Branch Github\CertifyHub-Pranik\scripts"
+
+then run :
+	.\create-keypair.ps1
+	
+	
+Private Key : C:\Users\prani\.ssh\ec2
+Public Key  : C:\Users\prani\.ssh\ec2.pub
