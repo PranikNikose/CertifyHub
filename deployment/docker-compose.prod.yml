@@ -14,7 +14,7 @@ services:
     image: praniknikose/certifyhub-backend:latest
     container_name: certifyhub-backend
     environment:
-      DB_URL: jdbc:postgresql://certifyhub-dev-rds.xxxxxxxxx.ap-south-1.rds.amazonaws.com:5432/certifyhub
+      DB_URL: jdbc:postgresql://certifyhub-dev-postgres.cj0w84ei6au8.ap-south-1.rds.amazonaws.com:5432/certifyhub
       DB_USERNAME: certifyhub
       DB_PASSWORD: certifyhub
     ports:

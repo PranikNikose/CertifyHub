@@ -25,6 +25,8 @@ Before ding anythging & after applying terformec2 creat Publish Over SSH in jenk
 		Remote Directory: /home/ec2-user
 		add : private key 
 
+then create the Db Tables using scripts into RDS :
+	psql -h certifyhub-dev-postgres.cj0w84ei6au8.ap-south-1.rds.amazonaws.com -U certifyhub -d certifyhub
 Phase 9 — Deployment Automation
 Phase 10 — Domain & HTTPS
 Phase 11 — Secrets Management
