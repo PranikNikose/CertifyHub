@@ -36,7 +36,7 @@ pipeline {
 		
 		REMOTE_DIR = "/home/ec2-user/${APP_NAME}"
 		SSH_CONFIG = 'certifyhub-ec2'
-		COMPOSE_FILE = 'deployment\\docker-compose.yml'
+		COMPOSE_FILE = 'deployment\\docker-compose.prod.yml'
 	}
 
 	stages {
