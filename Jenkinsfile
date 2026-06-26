@@ -211,24 +211,23 @@ pipeline {
 		}
 
 		stage('Prepare EC2') {
-			steps {
-				sshPublisher(
-					publishers: [
-						sshPublisherDesc(
-							configName: SSH_CONFIG,
-							transfers: [
-								sshTransfer(
-									execCommand: """
-										mkdir -p ${REMOTE_DIR}
-										ls -ld ${REMOTE_DIR}
-									"""
-								)
-							]
-						)
-					]
-				)
-			}
-		}
+    steps {
+        sshPublisher(
+            publishers: [
+                sshPublisherDesc(
+                    configName: SSH_CONFIG,
+                    transfers: [
+                        sshTransfer(
+                            execCommand: """
+                                mkdir -p ${REMOTE_DIR}
+                            """
+                        )
+                    ]
+                )
+            ]
+        )
+    }
+}
 
 		stage('Upload Compose File') {
 			steps {
