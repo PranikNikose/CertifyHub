@@ -16,9 +16,9 @@ services:
       context: ../certifyhub-backend
     container_name: certifyhub-backend
     environment:
-      DB_URL=jdbc:postgresql://certifyhub-dev-rds.xxxxxxxxx.ap-south-1.rds.amazonaws.com:5432/certifyhub
-      DB_USERNAME=certifyhub
-      DB_PASSWORD=certifyhub
+      DB_URL: jdbc:postgresql://certifyhub-dev-rds.xxxxxxxxx.ap-south-1.rds.amazonaws.com:5432/certifyhub
+      DB_USERNAME: certifyhub
+      DB_PASSWORD: certifyhub
     ports:
       - "8082:8082"
     restart: unless-stopped
