@@ -73,6 +73,7 @@ pipeline {
 			steps {
 				bat """
 					FOR /F "tokens=3" %%i IN ('docker images ^| findstr ${APP_NAME}') DO docker rmi -f %%i
+					exit /b 0
 				"""
 			}
 		}
