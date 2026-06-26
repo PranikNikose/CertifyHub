@@ -36,7 +36,10 @@ pipeline {
 		
 		REMOTE_DIR = "/home/ec2-user/${APP_NAME}"
 		SSH_CONFIG = 'certifyhub-ec2'
-		COMPOSE_FILE = 'deployment\\docker-compose.prod.yml'
+		
+		COMPOSE_FILE = 'docker-compose.dev.yml'
+		COMPOSE_FILE_PATH = "deployment\\${COMPOSE_FILE}"
+		
 	}
 
 	stages {
@@ -200,13 +203,13 @@ pipeline {
 		stage('Verify Compose File') {
 			steps {
 				bat 'dir deployment'
-				bat "type ${COMPOSE_FILE}"
+				bat "type ${COMPOSE_FILE_PATH}"
 			}
 		}
 
 		stage('Validate Compose File') {
 			steps {
-				bat "docker compose -f ${COMPOSE_FILE} config"
+				bat "docker compose -f ${COMPOSE_FILE_PATH} config"
 			}
 		}
 
@@ -237,7 +240,7 @@ pipeline {
 							configName: SSH_CONFIG,
 							transfers: [
 								sshTransfer(
-									sourceFiles: COMPOSE_FILE,
+									sourceFiles: COMPOSE_FILE_PATH,
 									removePrefix: 'deployment',
 									remoteDirectory: APP_NAME
 								)
@@ -261,11 +264,10 @@ pipeline {
 									execCommand: """
 										cd ${REMOTE_DIR}
 
-										docker compose pull
-										docker compose down
-										docker compose up -d
-
-										docker compose ps
+										docker compose -f ${COMPOSE_FILE} pull
+										docker compose -f ${COMPOSE_FILE} down
+										docker compose -f ${COMPOSE_FILE} up -d
+										docker compose -f ${COMPOSE_FILE} ps
 									"""
 								)
 							]
