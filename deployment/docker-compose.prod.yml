@@ -1,8 +1,7 @@
 services:
-  
+
   nginx:
-    build:
-      context: ../certifyhub-nginx
+    image: praniknikose/certifyhub-nginx:latest
     container_name: certifyhub-nginx
     depends_on:
       - frontend
@@ -12,8 +11,7 @@ services:
     restart: unless-stopped
 
   backend:
-    build:
-      context: ../certifyhub-backend
+    image: praniknikose/certifyhub-backend:latest
     container_name: certifyhub-backend
     environment:
       DB_URL: jdbc:postgresql://certifyhub-dev-rds.xxxxxxxxx.ap-south-1.rds.amazonaws.com:5432/certifyhub
@@ -24,8 +22,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    build:
-      context: ../certifyhub-frontend
+    image: praniknikose/certifyhub-frontend:latest
     container_name: certifyhub-frontend
     depends_on:
       - backend
