@@ -10,11 +10,20 @@ Phase 6 — Jenkins Build Pipeline (Code to Image Push)
 	note before S3 & Dynamo we created Bootstrep to create s3 & dynamo db 
 	then we only stored the terrafom.state file in s3 using dynmodb lock 
 	then will create network : VPC ,IGW ,Public & Private Subnet, Route , Routetable
+	then we create security : 
+	then we create Iam :
+	then we create RDS :
+	then we create EC2 :
 Phase 7 — Terraform State Infrastructure (s3 + dynamoDB) + 
-
-
-
 Phase 8 — Terraform EC2 + EIP
+
+Before ding anythging & after applying terformec2 creat Publish Over SSH in jenkins :
+	Manage Jenkins → Plugins → Publish Over SSH
+		Name: certifyhub-ec2
+		Hostname: <EC2-PUBLIC-IP>
+		Username: ec2-user
+		Remote Directory: /home/ec2-user
+		add : private key 
 
 Phase 9 — Deployment Automation
 Phase 10 — Domain & HTTPS
