@@ -1,5 +1,6 @@
 services:
 
+
   nginx:
     image: praniknikose/certifyhub-nginx:latest
     container_name: certifyhub-nginx
