@@ -8,10 +8,18 @@ Thumbs.db
 
 certifyhub-backend/target/
 certifyhub-frontend/node_modules/
+
+
+# Terraform
 .terraform/
 *.tfstate
-
-
-# Terraform plan files
-*.tfplan
+*.tfstate.*
 tfplan
+*.tfplan
+
+# Variable files
+*.tfvars
+
+# Logs
+*.log
+crash.log
